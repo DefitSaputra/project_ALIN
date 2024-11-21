@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimisasi Energi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Optimisasi Konsumsi Energi Listrik</h1>
+    <table id="energy-table">
+        <thead>
+            <tr>
+                <th>Hari\Device</th>
+                <th>Device 1</th>
+                <th>Device 2</th>
+                <th>Device 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hari 1</td>
+                <td><button class="matrix-btn" data-hari="1" data-device="1">+</button></td>
+                <td><button class="matrix-btn" data-hari="1" data-device="2">+</button></td>
+                <td><button class="matrix-btn" data-hari="1" data-device="3">+</button></td>
+            </tr>
+            <tr>
+                <td>Hari 2</td>
+                <td><button class="matrix-btn" data-hari="2" data-device="1">+</button></td>
+                <td><button class="matrix-btn" data-hari="2" data-device="2">+</button></td>
+                <td><button class="matrix-btn" data-hari="2" data-device="3">+</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Modal Form -->
+    <div id="modal" class="hidden">
+        <form id="device-form">
+            <h2>Masukkan Detail Device</h2>
+            <label>
+                Nama Device:
+                <input type="text" id="device-name" required> <br> <br>
+            </label>
+            <label>
+                Berapa Jam Dipakai:
+                <input type="number" id="usage-hours" min="1" required> <br> <br>
+            </label>
+            <label>
+                Konsumsi Daya (Watt):
+                <input type="number" id="power-usage" min="1" required> <br> <br>
+            </label>
+            <button type="submit">Simpan</button> &nbsp;
+            <button type="button" id="close-modal">Batal</button>
+        </form>
+    </div>
+
+    <!-- Tempat untuk menampilkan hasil -->
+    <div id="results"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
