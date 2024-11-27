@@ -3,59 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimisasi Energi</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Optimisasi Konsumsi Energi</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Optimisasi Konsumsi Energi Listrik</h1>
-    <table id="energy-table">
-        <thead>
-            <tr>
-                <th>Hari\Device</th>
-                <th>Device 11</th>
-                <th>Device 2</th>
-                <th>Device 3</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Hari 1</td>
-                <td><button class="matrix-btn" data-hari="1" data-device="1">+</button></td>
-                <td><button class="matrix-btn" data-hari="1" data-device="2">+</button></td>
-                <td><button class="matrix-btn" data-hari="1" data-device="3">+</button></td>
-            </tr>
-            <tr>
-                <td>Hari 2</td>
-                <td><button class="matrix-btn" data-hari="2" data-device="1">+</button></td>
-                <td><button class="matrix-btn" data-hari="2" data-device="2">+</button></td>
-                <td><button class="matrix-btn" data-hari="2" data-device="3">+</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <h1>Optimisasi Konsumsi Energi Listrik</h1>
+        <div class="form-section">
+            <div class="input-group">
+                <label for="max-watt">Target Maksimal Watt per Hari:</label>
+                <input type="number" id="max-watt" placeholder="Masukkan maksimal watt per hari" required>
+            </div>
+            <div class="buttons">
+                <button id="add-device" class="btn">Tambah Device</button>
+                <button id="add-day" class="btn">Tambah Hari</button>
+                <button id="reset-table" class="btn btn-danger">Reset</button>
+            </div>
 
-    <!-- Modal Form -->
-    <div id="modal" class="hidden">
-        <form id="device-form">
-            <h2>Masukkan Detail Device</h2>
-            <label>
-                Nama Device:
-                <input type="text" id="device-name" required> <br> <br>
-            </label>
-            <label>
-                Berapa Jam Dipakai:
-                <input type="number" id="usage-hours" min="1" required> <br> <br>
-            </label>
-            <label>
-                Konsumsi Daya (Watt):
-                <input type="number" id="power-usage" min="1" required> <br> <br>
-            </label>
-            <button type="submit">Simpan</button> &nbsp;
-            <button type="button" id="close-modal">Batal</button>
-        </form>
+            <table id="matrix-table">
+                <thead>
+                    <tr>
+                        <th>Device</th>
+                        <th>Hari 1</th>
+                    </tr>
+                </thead>
+                <tbody id="matrix-body">
+                    <tr>
+                        <td>Device 1</td>
+                        <td><button class="matrix-btn" data-day="1">+</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button id="calculate" class="btn">Hitung</button>
+            <div id="error" class="error"></div>
+        </div>
+
+        <div class="results" id="results"></div>
+
+        <!-- Modal for adding device -->
+        <div id="modal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Tambah Device</h3>
+                <form id="device-form">
+                    <label for="device-name">Nama Device:</label>
+                    <input type="text" id="device-name" required>
+                    
+                    <label for="usage-hours">Jam Penggunaan:</label>
+                    <input type="number" id="usage-hours" required min="1">
+                    
+                    <label for="power-usage">Konsumsi Daya (Watt):</label>
+                    <input type="number" id="power-usage" required min="0">
+                    
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <button type="button" id="close-modal" class="btn btn-secondary">Tutup</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="overlay" class="overlay"></div>
     </div>
-
-    <!-- Tempat untuk menampilkan hasil -->
-    <div id="results"></div>
 
     <script src="script.js"></script>
 </body>
